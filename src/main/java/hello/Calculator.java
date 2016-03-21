@@ -4,7 +4,6 @@ public class Calculator {
 
     private final String num1;
     private final String num2;
-    private static final String template = "The answer = , %s!";
 
     public Calculator(String num1, String num2) {
         this.num1 = num1;
