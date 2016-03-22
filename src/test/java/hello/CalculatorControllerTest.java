@@ -1,31 +1,27 @@
 package hello;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.http.MediaType;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.nio.charset.Charset;
-import java.util.Arrays;
 
+import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes=Application.class)
 @WebAppConfiguration
-//@WebIntegrationTest
 public class CalculatorControllerTest {
     private MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
             MediaType.APPLICATION_JSON.getSubtype(),
@@ -34,9 +30,6 @@ public class CalculatorControllerTest {
     private MockMvc mockMvc;
 
 //    private HttpMessageConverter mappingJackson2HttpMessageConverter;
-
-//    @Autowired
-//    private TodoService todoServiceMock;
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -68,9 +61,39 @@ public class CalculatorControllerTest {
 //    }
 
     @Test
-    public void addTest() throws Exception {
-        mockMvc.perform(get("/calculator?num1=6&num2=3"))
-                .andExpect(status().isOk());
+    public void add() throws Exception {
+        mockMvc.perform(get("/add?num1=6&num2=3"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.num1", is("6")))
+                .andExpect(jsonPath("$.num2", is("3")))
+                .andExpect(jsonPath("$.answer", is("9")));
+    }
+
+    @Test
+    public void subtract() throws Exception {
+        mockMvc.perform(get("/subtract?num1=6&num2=3"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.num1", is("6")))
+                .andExpect(jsonPath("$.num2", is("3")))
+                .andExpect(jsonPath("$.answer", is("3")));
+    }
+
+    @Test
+    public void multiply() throws Exception {
+        mockMvc.perform(get("/multiply?num1=6&num2=3"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.num1", is("6")))
+                .andExpect(jsonPath("$.num2", is("3")))
+                .andExpect(jsonPath("$.answer", is("18")));
+    }
+
+    @Test
+    public void divide() throws Exception {
+        mockMvc.perform(get("/divide?num1=6&num2=3"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.num1", is("6")))
+                .andExpect(jsonPath("$.num2", is("3")))
+                .andExpect(jsonPath("$.answer", is("2")));
     }
 
 //    @Test

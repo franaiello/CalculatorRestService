@@ -22,4 +22,19 @@ public class Calculator {
         Integer answer = Integer.parseInt(this.num1) + Integer.parseInt(this.num2);
         return new Answer(num1, num2, answer.toString());
     }
+
+    public Answer subtract() {
+        Integer answer = Integer.parseInt(this.num1) - Integer.parseInt(this.num2);
+        return new Answer(num1, num2, answer.toString());
+    }
+
+    public Answer multiply() {
+        Integer answer = Integer.parseInt(this.num1) * Integer.parseInt(this.num2);
+        return new Answer(num1, num2, answer.toString());
+    }
+
+    public Answer divide() {
+        Integer answer = Integer.parseInt(this.num1) / Integer.parseInt(this.num2);
+        return new Answer(num1, num2, answer.toString());
+    }
 }
