@@ -1,4 +1,4 @@
-package hello;
+package com.aiello.calculator;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -66,6 +66,12 @@ public class CalculatorControllerIT {
                 .andExpect(jsonPath("$.num1", is("6")))
                 .andExpect(jsonPath("$.num2", is("3")))
                 .andExpect(jsonPath("$.answer", is("2")));
+    }
+
+    @Test
+    public void divideByZero() throws Exception {
+        mockMvc.perform(get("/divide?num1=6&num2=0"))
+                .andExpect(status().isConflict());
     }
 
 }

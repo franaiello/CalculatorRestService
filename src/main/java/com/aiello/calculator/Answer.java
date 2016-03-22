@@ -1,4 +1,4 @@
-package hello;
+package com.aiello.calculator;
 
 public class Answer {
     private final String answer;

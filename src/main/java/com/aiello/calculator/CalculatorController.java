@@ -1,9 +1,6 @@
-package hello;
+package com.aiello.calculator;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CalculatorController {
@@ -33,7 +30,7 @@ public class CalculatorController {
 
     @RequestMapping(value="/divide", method = RequestMethod.GET)
     public Answer divide(@RequestParam(value="num1") String num1,
-                         @RequestParam(value="num2") String num2) {
+                         @RequestParam(value="num2") String num2) throws DivideByZeroException {
         Calculator calc = new Calculator(num1, num2);
         return calc.divide();
     }

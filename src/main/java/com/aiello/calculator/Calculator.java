@@ -1,4 +1,4 @@
-package hello;
+package com.aiello.calculator;
 
 public class Calculator {
 
@@ -33,7 +33,10 @@ public class Calculator {
         return new Answer(num1, num2, answer.toString());
     }
 
-    public Answer divide() {
+    public Answer divide() throws DivideByZeroException {
+        if (num2.equals("0"))
+            throw new DivideByZeroException("num2 is zero - cannot divide by a value of zero");
+
         Integer answer = Integer.parseInt(this.num1) / Integer.parseInt(this.num2);
         return new Answer(num1, num2, answer.toString());
     }
