@@ -22,6 +22,9 @@
         <junit.version>4.12</junit.version>
         <hamcrest.version>1.3</hamcrest.version>
         <rest-assured.version>2.4.0</rest-assured.version>
+
+        <!-- Test -->
+        <jmockit.version>1.21</jmockit.version>
     </properties>
 
     <dependencies>
@@ -62,6 +65,21 @@
             <artifactId>json-path</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Test Dependencies -->
+        <dependency>
+            <!-- jmockit must be on the class path before TestNG -->
+            <groupId>org.jmockit</groupId>
+            <artifactId>jmockit</artifactId>
+            <version>${jmockit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
     </dependencies>
 
 

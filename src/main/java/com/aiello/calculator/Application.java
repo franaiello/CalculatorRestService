@@ -12,8 +12,8 @@ public class Application {
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(Application.class, args);
 
-        String[] beans = ctx.getBeanDefinitionNames();
-        Arrays.sort(beans);
-        Arrays.stream(beans).forEach(System.out::println);
+//        String[] beans = ctx.getBeanDefinitionNames();
+//        Arrays.sort(beans);
+//        Arrays.stream(beans).forEach(System.out::println);
     }
 }
