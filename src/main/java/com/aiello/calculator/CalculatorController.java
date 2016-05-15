@@ -1,36 +1,43 @@
 package com.aiello.calculator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 public class CalculatorController {
-
-    private static final String template = "You entered, %s";
 
     @Autowired Calculator calc;
 
-    @RequestMapping(value="/add", method = RequestMethod.GET)
-    public Answer add(@RequestParam(value="num1") String num1,
-                      @RequestParam(value="num2") String num2) {
-        return calc.add(num1, num2);
+    @RequestMapping(value="/entryform", method = RequestMethod.GET)
+    public String addForm(Model model) {
+        model.addAttribute("formInputs", new FormInputs());
+        return "entryform";
     }
 
-    @RequestMapping(value="/subtract", method = RequestMethod.GET)
-    public Answer subtract(@RequestParam(value="num1") String num1,
-                           @RequestParam(value="num2") String num2) {
-        return calc.subtract(num1, num2);
-    }
+    @RequestMapping(value="/entryform", method = RequestMethod.POST)
+    public String addSubmit(@ModelAttribute FormInputs formInputs, Model model) {
+        switch (formInputs.getOperator()) {
+            case "add":
+                Answer answerAdd = calc.add(formInputs.getOperand1(), formInputs.getOperand2());
+                model.addAttribute("result", answerAdd);
+                break;
+            case "subtract":
+                Answer answerSubtract = calc.subtract(formInputs.getOperand1(), formInputs.getOperand2());
+                model.addAttribute("result", answerSubtract);
+                break;
+            case "multiply":
+                Answer answerMultiply = calc.multiply(formInputs.getOperand1(), formInputs.getOperand2());
+                model.addAttribute("result", answerMultiply);
+                break;
+            case "divide":
+                Answer answerDivide = calc.divide(formInputs.getOperand1(), formInputs.getOperand2());
+                model.addAttribute("result", answerDivide);
+                break;
+        }
 
-    @RequestMapping(value="/multiply", method = RequestMethod.GET)
-    public Answer multiply(@RequestParam(value="num1") String num1,
-                           @RequestParam(value="num2") String num2) {
-        return calc.multiply(num1, num2);
-    }
+        return "answer";
 
-    @RequestMapping(value="/divide", method = RequestMethod.GET)
-    public Answer divide(@RequestParam(value="num1") String num1,
-                         @RequestParam(value="num2") String num2) throws DivideByZeroException {
-        return calc.divide(num1, num2);
     }
 }
