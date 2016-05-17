@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Math Fun</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Math Fun</h1>
+<form action="/#" th:action="@{/entryform}" th:object="${formInputs}" method="post">
+    <p>Operand 1: <input type="text" th:field="*{operand1}"/></p>
+    <p>Operand 2: <input type="text" th:field="*{operand2}"/></p>
+    <!-- The second value will be selected initially -->
+    <p><select name="select" th:field="*{operator}">
+        <option value="add" th:field="*{operator}">add</option>
+        <option value="subtract" th:field="*{operator}">subtract</option>
+        <option value="multiply" th:field="*{operator}">multiply</option>
+        <option value="divide" th:field="*{operator}">divide</option>
+    </select></p>
+    <p><input type="submit" value="Submit" /></p>
+</form>
+</body>
+</html>
