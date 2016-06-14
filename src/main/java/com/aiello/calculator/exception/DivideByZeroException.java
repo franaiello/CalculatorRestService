@@ -1,4 +1,4 @@
-package com.aiello.calculator;
+package com.aiello.calculator.exception;
 
 
 import org.springframework.http.HttpStatus;

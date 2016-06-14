@@ -7,16 +7,42 @@
 <body>
 <h1>Math Fun</h1>
 <form action="/#" th:action="@{/entryform}" th:object="${formInputs}" method="post">
-    <p>Operand 1: <input type="text" th:field="*{operand1}"/></p>
-    <p>Operand 2: <input type="text" th:field="*{operand2}"/></p>
+    <table>
+        <tr>
+            <td>Operand 1:</td>
+            <td> <input type="text" th:field="*{operand1}"/></td>
+            <td th:if="${#fields.hasErrors('operand1')}" th:errors="*{operand1}"> Operand1 Error</td>
+        </tr>
+
+        <tr>
+            <td>Operand 2:</td>
+            <td> <input type="text" th:field="*{operand2}"/></td>
+            <td th:if="${#fields.hasErrors('operand2')}" th:errors="*{operand2}"> Operand2 Error</td>
+        </tr>
+
+        <tr>
+            <td>
+                <select name="select" th:field="*{operator}">
+                    <option value="add" th:field="*{operator}">add</option>
+                    <option value="subtract" th:field="*{operator}">subtract</option>
+                    <option value="multiply" th:field="*{operator}">multiply</option>
+                    <option value="divide" th:field="*{operator}">divide</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
     <!-- The second value will be selected initially -->
-    <p><select name="select" th:field="*{operator}">
-        <option value="add" th:field="*{operator}">add</option>
-        <option value="subtract" th:field="*{operator}">subtract</option>
-        <option value="multiply" th:field="*{operator}">multiply</option>
-        <option value="divide" th:field="*{operator}">divide</option>
-    </select></p>
-    <p><input type="submit" value="Submit" /></p>
+    <!--<p><select name="select" th:field="*{operator}">-->
+        <!--<option value="add" th:field="*{operator}">add</option>-->
+        <!--<option value="subtract" th:field="*{operator}">subtract</option>-->
+        <!--<option value="multiply" th:field="*{operator}">multiply</option>-->
+        <!--<option value="divide" th:field="*{operator}">divide</option>-->
+    <!--</select></p>-->
+    <!--<p><input type="submit" value="Submit" /></p>-->
 </form>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.aiello.calculator;
 
+// TODO: Replace with Lombok
 public class Answer {
     private final String answer;
     private String operand1;

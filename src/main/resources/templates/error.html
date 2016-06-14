@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Error Page</h1>
+<p>We got an error</p>
+<p th:text="'Operand1: ' + ${operand1}" />
+<p th:text="'Operand2: ' + ${operand2}" />
+<p th:text="'errCode: ' + ${errCode}" />
+<p th:text="'errMsg: ' + ${errMsg}" />
+<a href="/entryform">Submit another message</a>
+</body>
+</html>

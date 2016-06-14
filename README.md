@@ -1,3 +1,2 @@
-This is my first Spring app that accepts two params and returns the addition of these two params.
-
-It is helping me understanding Spring
+#
+This project is a Spring application that illustrates Spring MVC and Thymeleaf to accept input and display the output in HTML 
