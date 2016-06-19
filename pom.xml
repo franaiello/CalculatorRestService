@@ -25,6 +25,7 @@
 
         <!-- Test -->
         <jmockit.version>1.21</jmockit.version>
+        <testng.version>6.9.10</testng.version>
     </properties>
 
     <dependencies>
@@ -65,6 +66,11 @@
             <artifactId>json-path</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
 
         <!-- Test Dependencies -->
         <dependency>
@@ -74,10 +80,10 @@
             <version>${jmockit.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
         </dependency>
 
     </dependencies>

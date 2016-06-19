@@ -47,15 +47,15 @@ public class CalculatorController {
                 model.addAttribute("result", answerAdd);
                 break;
             case "subtract":
-                Answer answerSubtract = calc.subtract(formInputs.getOperand1(), formInputs.getOperand2());
+                Answer answerSubtract = calc.subtract(formInputs);
                 model.addAttribute("result", answerSubtract);
                 break;
             case "multiply":
-                Answer answerMultiply = calc.multiply(formInputs.getOperand1(), formInputs.getOperand2());
+                Answer answerMultiply = calc.multiply(formInputs);
                 model.addAttribute("result", answerMultiply);
                 break;
             case "divide":
-                Answer answerDivide = calc.divide(formInputs.getOperand1(), formInputs.getOperand2());
+                Answer answerDivide = calc.divide(formInputs);
                 model.addAttribute("result", answerDivide);
                 break;
         }
