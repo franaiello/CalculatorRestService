@@ -23,20 +23,22 @@ import javax.validation.Valid;
 public class CalculatorController {
 
     private static final Logger logger = LoggerFactory.getLogger(CalculatorController.class);
+    private static final String ENTRY_FORM_PATH = "/entryform";
+
 
     @Autowired
     Calculator calc;
 
-    @RequestMapping(value="/entryform", method = RequestMethod.GET)
+    @RequestMapping(value=ENTRY_FORM_PATH, method = RequestMethod.GET)
     public String addForm(Model model) {
         model.addAttribute("formInputs", new FormInputs());
-        return "entryform";
+        return ENTRY_FORM_PATH;
     }
 
-    @RequestMapping(value="/entryform", method = RequestMethod.POST)
+    @RequestMapping(value=ENTRY_FORM_PATH, method = RequestMethod.POST)
     public String addSubmit(@ModelAttribute @Valid FormInputs formInputs, Model model, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
-            return "entryform";
+            return ENTRY_FORM_PATH;
         }
 
         validateOperands(formInputs);
@@ -77,6 +79,12 @@ public class CalculatorController {
         }
     }
 
+    /**
+     * Exception handler manages the information to send back to client when an exception is caught
+     * @param req
+     * @param cge
+     * @return
+     */
     @ExceptionHandler(CustomGenericException.class)
     public ModelAndView handleCustomException(HttpServletRequest req, CustomGenericException cge) {
         logger.error("Requested URL=" + req.getRequestURL());
