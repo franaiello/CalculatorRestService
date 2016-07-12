@@ -24,6 +24,8 @@ public class CalculatorController {
 
     private static final Logger logger = LoggerFactory.getLogger(CalculatorController.class);
     private static final String ENTRY_FORM_PATH = "/entryform";
+    private static final String ATTRIBUTE_RESULT = "result";
+
 
 
     @Autowired
@@ -36,7 +38,8 @@ public class CalculatorController {
     }
 
     @RequestMapping(value=ENTRY_FORM_PATH, method = RequestMethod.POST)
-    public String addSubmit(@ModelAttribute @Valid FormInputs formInputs, Model model, BindingResult bindingResult) throws Exception {
+    public String addSubmit(@ModelAttribute FormInputs formInputs, Model model, BindingResult bindingResult) throws Exception {
+        // If errors are detected then redisplay the "/entryform" page
         if (bindingResult.hasErrors()) {
             return ENTRY_FORM_PATH;
         }
@@ -46,19 +49,19 @@ public class CalculatorController {
         switch (formInputs.getOperator()) {
             case "add":
                 Answer answerAdd = calc.add(formInputs);
-                model.addAttribute("result", answerAdd);
+                model.addAttribute(ATTRIBUTE_RESULT, answerAdd);
                 break;
             case "subtract":
                 Answer answerSubtract = calc.subtract(formInputs);
-                model.addAttribute("result", answerSubtract);
+                model.addAttribute(ATTRIBUTE_RESULT, answerSubtract);
                 break;
             case "multiply":
                 Answer answerMultiply = calc.multiply(formInputs);
-                model.addAttribute("result", answerMultiply);
+                model.addAttribute(ATTRIBUTE_RESULT, answerMultiply);
                 break;
             case "divide":
                 Answer answerDivide = calc.divide(formInputs);
-                model.addAttribute("result", answerDivide);
+                model.addAttribute(ATTRIBUTE_RESULT, answerDivide);
                 break;
         }
 

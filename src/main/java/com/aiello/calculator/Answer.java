@@ -1,6 +1,11 @@
 package com.aiello.calculator;
 
-// TODO: Replace with Lombok
+import lombok.Data;
+
+/**
+ * Class is a simple POJO that is serialized to HTML page
+ */
+@Data
 public class Answer {
     private final String answer;
     private String operand1;
@@ -10,25 +15,5 @@ public class Answer {
         this.operand1 = operand1;
         this.operand2 = operand2;
         this.answer = answer;
-    }
-
-    public String getOperand1() {
-        return operand1;
-    }
-
-    public String getOperand2() {
-        return operand2;
-    }
-
-    public String getAnswer() {
-        return this.answer;
-    }
-
-    public void setOperand1(String operand1) {
-        this.operand1 = operand1;
-    }
-
-    public void setOperand2(String operand2) {
-        this.operand2 = operand2;
     }
 }
