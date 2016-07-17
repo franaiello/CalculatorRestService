@@ -27,6 +27,7 @@
         <!-- Test -->
         <jmockit.version>1.21</jmockit.version>
         <testng.version>6.9.10</testng.version>
+        <openpojo.version>0.8.4</openpojo.version>
     </properties>
 
     <dependencies>
@@ -90,6 +91,11 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.openpojo</groupId>
+            <artifactId>openpojo</artifactId>
+            <version>${openpojo.version}</version>
         </dependency>
 
     </dependencies>

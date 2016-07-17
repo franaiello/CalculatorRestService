@@ -1,8 +1,8 @@
 package com.aiello.calculator.controller;
 
-import com.aiello.calculator.Answer;
+import com.aiello.calculator.pojo.Answer;
 import com.aiello.calculator.Calculator;
-import com.aiello.calculator.FormInputs;
+import com.aiello.calculator.pojo.FormInputs;
 import com.aiello.calculator.exception.CustomGenericException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,8 +75,8 @@ public class CalculatorController {
      */
     private void validateOperands(@ModelAttribute @Valid FormInputs formInputs) throws Exception {
         try {
-            formInputs.getNum1();
-            formInputs.getNum2();
+            formInputs.getParsedNum1();
+            formInputs.getParsedNum2();
         } catch (NumberFormatException nfe) {
             throw new CustomGenericException("Operand(s) is not a numeric value", nfe.getMessage());
         }
